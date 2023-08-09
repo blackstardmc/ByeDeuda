@@ -10,7 +10,6 @@ data class DeudaEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "phonenumber") val phonenumber: String,
     @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "amount") val amount: Int,
     //True(Deuda) False(Prestamo)
@@ -21,7 +20,6 @@ data class DeudaEntity(
 fun Deuda.toDatabase() =
     DeudaEntity(
         name = name,
-        phonenumber = phonenumber,
         type = type,
         description = description,
         amount = amount,
