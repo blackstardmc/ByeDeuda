@@ -2,8 +2,6 @@ package com.blackneko.byedeuda.di
 
 import android.content.Context
 import androidx.room.Room
-import com.blackneko.byedeuda.data.DeudaRepository
-import com.blackneko.byedeuda.data.dao.DaoDeuda
 import com.blackneko.byedeuda.data.dao.db.DeudaDatabase
 import dagger.Module
 import dagger.Provides
@@ -19,14 +17,16 @@ object RoomModule {
 
     @Singleton
     @Provides
-    fun providesRoom(@ApplicationContext context: Context) = Room.databaseBuilder(
-        context,
-        DeudaDatabase::class.java, DEUDA_DATABASE_NAME
-    ).build()
-
+    fun providesRoom(@ApplicationContext context: Context):DeudaDatabase {
+        return  Room.databaseBuilder(
+            context,
+            DeudaDatabase::class.java, DEUDA_DATABASE_NAME
+        ).build()
+    }
     @Singleton
     @Provides
     fun providesDeudaDao(db: DeudaDatabase) = db.getDaoDeuda()
+
 
 
 }
